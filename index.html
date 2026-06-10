@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для моей любимой Гели ❤️</title>
+
+    <link rel="stylesheet" href="style.css.css">
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">
+        🌙 / ☀️
+    </button>
+    <div class="hearts">
+        <span>💖</span>
+        <span>💕</span>
+        <span>💗</span>
+        <span>💞</span>
+        <span>❤️</span>
+    </div>
+
+    <div class="letter-screen" id="letterScreen">
+        <div class="letter-box">
+            <h1>💌 У тебя есть письмо</h1>
+            <p>Открой его ❤️</p>
+            <button onclick="openLetter()">Открыть</button>
+        </div>
+    </div>
+
+    <section class="hero">
+
+        <img src="main.jpg.jpg" class="main-photo">
+
+        <h1>Для моей любимой Гели ❤️</h1>
+
+        <p class="subtitle">
+            Небольшая история о том, как один год стал одним из самых счастливых в моей жизни.
+        </p>
+
+    </section>
+
+    <section class="story hiden">
+        <section class="qualities hiden">
+            <section class="memory hiden" id="memory">
+                <section class="counter hidden">
+                    <section class="final hidden">
+
+                        <h2>Как всё началось ❤️</h2>
+
+                        <p>
+                            Мы начали общаться ещё в 11 классе, в общей компании.
+                        </p>
+
+                        <p>
+                            Тогда я даже не представлял, насколько важным человеком ты станешь для меня.
+                        </p>
+
+                        <p>
+                            Со временем ты стала той, о ком я думаю каждый день.
+                        </p>
+
+                    </section>
+
+                    <section class="qualities">
+
+                        <h2>Что я люблю в тебе ❤️</h2>
+
+                        <div class="cards">
+
+                            <div class="card">
+                                <h3>✨ Открытость</h3>
+                                <p>Мне нравится, что рядом с тобой всегда можно быть собой.</p>
+                            </div>
+
+                            <div class="card">
+                                <h3>🌸 Красота</h3>
+                                <p>Ты прекрасна не только внешне, но и душой.</p>
+                            </div>
+
+                            <div class="card">
+                                <h3>🤍 Забота</h3>
+                                <p>Ты умеешь поддержать даже тогда, когда сама устаёшь.</p>
+                            </div>
+
+                            <div class="card">
+                                <h3>🌷 Терпение</h3>
+                                <p>Спасибо тебе за понимание и терпение.</p>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                    <div class="button-block">
+                        <button class="love-btn" onclick="showMemory()">
+                            ❤️ Узнать моё самое ценное воспоминание ❤️
+                        </button>
+                    </div>
+
+                    <section class="memory" id="memory">
+
+                        <h2>Самое ценное воспоминание ❤️</h2>
+
+                        <img src="memory.jpg" class="memory-photo">
+
+                        <p>
+                            Самые счастливые моменты — это наши встречи после долгой разлуки.
+                            Когда проходит месяц ожидания, а потом я наконец вижу тебя снова.
+                        </p>
+
+                    </section>
+
+                    <section class="counter">
+
+                        <h2>❤️ Мы вместе уже ❤️</h2>
+
+                        <div id="loveCounter"></div>
+
+                    </section>
+
+                    <section class="final">
+
+                        <h2>❤️ И это только начало нашей истории ❤️</h2>
+
+                        <p>
+                            Каждый день рядом с тобой напоминает мне,
+                            насколько мне повезло встретить тебя.
+                        </p>
+
+                    </section>
+
+                    <script>
+
+function openLetter() {
+
+    document.getElementById("letterScreen").style.display = "none";
+}
+
+function showMemory() {
+
+    document.getElementById("memory").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function updateCounter() {
+
+    const startDate = new Date("2025-04-11");
+
+    const today = new Date();
+
+    const diff = today - startDate;
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    document.getElementById("loveCounter").innerHTML =
+        days + " дней ❤️";
+}
+
+updateCounter();
+
+                    </script>
+
+                    <script>
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+        }
+
+    });
+
+}, {
+    threshold: 0.2
+});
+
+document.querySelectorAll(".hidden").forEach(el => {
+    observer.observe(el);
+});
+
+                    </script>
+                    <section class="signature">
+
+                        <p>
+                            Спасибо тебе за каждый день,
+                            за каждую встречу,
+                            за каждое ожидание.
+
+                            Люблю тебя ❤️
+                        </p>
+
+                    </section>
+                    <script>
+
+function toggleTheme() {
+
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+    } else {
+        localStorage.setItem("theme", "light");
+    }
+}
+
+window.onload = function() {
+
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+    }
+
+    updateCounter();
+}
+
+                    </script>
+</body>
+</html>
